@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0f766e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ACCUPLACER Exam 1">
+<title>📖 ACCUPLACER Exam 1 Reading Practice</title>
+<link rel="manifest" id="manifest-placeholder">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 50%, #b2f5ea 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0f2d24;
+    padding: 0;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Decorative Background Blobs */
+  .bg-decoration {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: -1;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  .bg-blob-1 {
+    width: 300px;
+    height: 300px;
+    background: #14b8a6;
+    top: -100px;
+    left: -100px;
+  }
+  .bg-blob-2 {
+    width: 400px;
+    height: 400px;
+    background: #0ea5e9;
+    bottom: -150px;
+    right: -100px;
+  }
+
+  /* APP CONTAINER */
+  .app-container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (min-width: 800px) {
+    .app-container {
+      flex-direction: row;
+      max-width: 1050px;
+      height: 660px;
+      min-height: 660px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 25px 50px -12px rgba(15, 118, 110, 0.12);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      margin: 20px;
+    }
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    gap: 16px;
+    border-bottom: 1px solid rgba(20, 184, 166, 0.15);
+  }
+
+  @media (min-width: 800px) {
+    .sidebar {
+      width: 320px;
+      flex-shrink: 0;
+      border-bottom: none;
+      border-right: 1px solid rgba(20, 184, 166, 0.15);
+      background: rgba(255, 255, 255, 0.8);
+      border-top-left-radius: 24px;
+      border-bottom-left-radius: 24px;
+      height: 100%;
+      overflow-y: auto;
+      gap: 20px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(20, 184, 166, 0.3) transparent;
+    }
+  }
+
+  header h1 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #0f766e;
+    line-height: 1.3;
+  }
+
+  header .subtitle {
+    font-size: 0.75rem;
+    color: #0d9488;
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
+  .section-title {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: #0d9488;
+    letter-spacing: 0.05em;
+    margin-bottom: -4px;
+    text-transform: uppercase;
+  }
+
+  /* TABS */
+  .tabs-wrap {
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tabs-wrap::-webkit-scrollbar { display: none; }
+
+  .tabs {
+    display: flex;
+    gap: 6px;
+  }
+
+  @media (min-width: 800px) {
+    .tabs {
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+
+  .tab-btn {
+    padding: 10px 14px;
+    border: 1.5px solid #14b8a6;
+    background: #fff;
+    color: #0f766e;
+    border-radius: 12px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 799px) {
+    .tab-btn {
+      flex-shrink: 0;
+      padding: 6px 12px;
+      border-radius: 20px;
+    }
+  }
+
+  .tab-btn:hover {
+    background: #f0fdfa;
+    transform: translateY(-1px);
+  }
+
+  .tab-btn.active {
+    background: #0f766e;
+    border-color: #0f766e;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(15, 118, 110, 0.15);
+  }
+
+  /* PROGRESS BAR */
+  .progress-wrap {
+    width: 100%;
+    height: 8px;
+    background: #ccfbf1;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #14b8a6, #0f766e);
+    border-radius: 10px;
+    transition: width 0.4s ease;
+  }
+
+  /* STATS CHIPS */
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (min-width: 800px) {
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .stats .chip-left {
+      grid-column: span 2;
+    }
+  }
+
+  .chip {
+    padding: 8px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex: 1;
+  }
+
+  .chip-remember { background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
+  .chip-forget   { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+  .chip-left     { background: #e0f2fe; color: #1e40af; border: 1px solid #bae6fd; }
+
+  .btn-shuffle {
+    width: 100%;
+    padding: 10px;
+    border-radius: 12px;
+    background: #f1f5f9;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .btn-shuffle:hover {
+    background: #e2e8f0;
+    transform: translateY(-1px);
+  }
+
+  /* MAIN CONTENT */
+  .main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    position: relative;
+  }
+
+  @media (min-width: 800px) {
+    .main-content {
+      height: 100%;
+      overflow-y: auto;
+    }
+  }
+
+  .card-counter {
+    font-size: 0.8rem;
+    color: #0f766e;
+    margin-bottom: 12px;
+    font-weight: 700;
+    background: rgba(20, 184, 166, 0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  /* SCENE & CARD */
+  .scene {
+    width: 100%;
+    max-width: 420px;
+    perspective: 1000px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    min-height: 270px;
+    transition: transform 0.3s;
+  }
+  .scene:hover {
+    transform: translateY(-2px);
+  }
+
+  @media (min-width: 800px) {
+    .scene {
+      min-height: 290px;
+    }
+  }
+
+  .card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .card.flipped { transform: rotateY(180deg); }
+
+  .face {
+    position: relative;
+    width: 100%;
+    min-height: 270px;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  @media (min-width: 800px) {
+    .face {
+      min-height: 290px;
+    }
+  }
+
+  .front {
+    background: #fff;
+    border: 1px solid rgba(20, 184, 166, 0.2);
+    box-shadow: 0 15px 35px rgba(15, 118, 110, 0.06);
+  }
+  .back {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, #0f766e 0%, #115e59 100%);
+    color: #fff;
+    transform: rotateY(180deg);
+    box-shadow: 0 15px 35px rgba(15, 118, 110, 0.12);
+  }
+
+  /* CARD FRONT CONTENT */
+  .word-main {
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: #0f766e;
+    text-align: center;
+    margin-bottom: 4px;
+    letter-spacing: -0.5px;
+  }
+  .word-pos {
+    font-size: 0.75rem;
+    background: #ccfbf1;
+    color: #0f766e;
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .word-ipa {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .card-action-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .btn-audio, .btn-hint {
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .btn-audio {
+    background: #f0fdfa;
+    border: 1px solid #14b8a6;
+    color: #0f766e;
+  }
+  .btn-audio:hover {
+    background: #ccfbf1;
+    transform: translateY(-1px);
+  }
+  .btn-hint {
+    background: #fff7ed;
+    border: 1px solid #f97316;
+    color: #c2410c;
+  }
+  .btn-hint:hover {
+    background: #ffedd5;
+    transform: translateY(-1px);
+  }
+
+  .tap-hint {
+    font-size: 0.68rem;
+    color: #94a3b8;
+    margin-top: 10px;
+  }
+
+  /* SVG HINT */
+  .svg-hint {
+    margin-top: 10px;
+    display: none;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 220px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+  .svg-hint svg { width: 100%; height: auto; display: block; }
+
+  /* CARD BACK CONTENT */
+  .vn-label {
+    font-size: 0.72rem;
+    opacity: 0.8;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .vn-meaning {
+    font-size: 1.35rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .vn-word {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    text-align: center;
+  }
+  .vn-example {
+    font-size: 0.8rem;
+    font-style: italic;
+    opacity: 0.95;
+    color: #ccfbf1;
+    text-align: center;
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.2);
+    width: 100%;
+    line-height: 1.4;
+  }
+  .vn-example strong {
+    color: #fef08a;
+    font-weight: 700;
+  }
+
+  /* CONTROL NAVIGATION */
+  .nav-row {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    max-width: 420px;
+    justify-content: center;
+  }
+  .nav-btn {
+    flex: 1;
+    padding: 12px 6px;
+    border: none;
+    border-radius: 14px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-btn:hover {
+    transform: translateY(-2px);
+  }
+  .nav-btn:active {
+    transform: translateY(1px);
+  }
+  .btn-prev  { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
+  .btn-prev:hover { background: #e2e8f0; box-shadow: 0 4px 12px rgba(148, 163, 184, 0.1); }
+  .btn-forget { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+  .btn-forget:hover { background: #fecaca; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15); }
+  .btn-remember { background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
+  .btn-remember:hover { background: #a7f3d0; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15); }
+  .btn-next  { background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
+  .btn-next:hover { background: #bae6fd; box-shadow: 0 4px 12px rgba(56, 189, 248, 0.1); }
+
+  /* SCREENS */
+  .finish-screen, .round-end-screen {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 420px;
+    background: #fff;
+    border-radius: 20px;
+    padding: 32px 24px;
+    box-shadow: 0 20px 40px rgba(15, 118, 110, 0.08);
+    border: 1px solid rgba(20, 184, 166, 0.15);
+  }
+  .finish-emoji { font-size: 3.5rem; margin-bottom: 12px; }
+  .finish-title { font-size: 1.5rem; font-weight: 800; color: #0f766e; margin-bottom: 8px; }
+  .finish-sub { font-size: 0.85rem; color: #475569; margin-bottom: 20px; line-height: 1.5; }
+
+  .finish-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+  .btn-restart {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #14b8a6, #0f766e);
+    color: #fff;
+    border: none;
+    border-radius: 14px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 12px rgba(15, 118, 110, 0.2);
+  }
+  .btn-restart:hover {
+    opacity: 0.95;
+    transform: translateY(-1px);
+  }
+  .btn-restart-alt {
+    background: #f1f5f9;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+    box-shadow: none;
+  }
+  .btn-restart-alt:hover {
+    background: #e2e8f0;
+  }
+
+  /* FORGET LIST */
+  .forget-list {
+    width: 100%;
+    text-align: left;
+    margin: 12px 0 20px;
+    max-height: 160px;
+    overflow-y: auto;
+    padding-right: 4px;
+  }
+  .forget-list h3 { font-size: 0.85rem; color: #991b1b; margin-bottom: 8px; font-weight: 700; }
+  .forget-item {
+    background: #fff5f5;
+    border: 1px solid #fecaca;
+    border-radius: 10px;
+    padding: 8px 12px;
+    margin-bottom: 6px;
+    font-size: 0.8rem;
+    color: #334155;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .forget-item strong { color: #b91c1c; }
+  .forget-item .pos-badge {
+    font-size: 0.7rem;
+    background: #fee2e2;
+    color: #991b1b;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
+  /* IOS INSTALL GUIDE */
+  .ios-guide {
+    display: none;
+    position: fixed;
+    bottom: 20px; left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    border: 1.5px solid #14b8a6;
+    border-radius: 16px;
+    padding: 14px 20px;
+    z-index: 1000;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    font-size: 0.8rem;
+    color: #334155;
+    text-align: center;
+    max-width: 320px;
+    width: calc(100% - 40px);
+  }
+  .ios-guide button {
+    position: absolute;
+    top: 8px; right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: #94a3b8;
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-decoration bg-blob-1"></div>
+<div class="bg-decoration bg-blob-2"></div>
+
+<div class="app-container">
+  <aside class="sidebar">
+    <header>
+      <h1>📖 ACCUPLACER Exam 1 Reading Practice</h1>
+      <p class="subtitle">Thẻ từ vựng luyện thi ACCUPLACER • 3D Flip</p>
+    </header>
+
+    <div class="section-title">📌 CHỦ ĐỀ HỌC</div>
+    <div class="tabs-wrap">
+      <div class="tabs" id="tabs"></div>
+    </div>
+
+    <div class="section-title">📈 TIẾN ĐỘ HỌC</div>
+    <div class="progress-wrap" id="progress-wrap">
+      <div class="progress-bar" id="progress-bar" style="width:0%"></div>
+    </div>
+    
+    <div class="stats">
+      <span class="chip chip-remember">✅ Nhớ: <span id="cnt-r">0</span></span>
+      <span class="chip chip-forget">❌ Quên: <span id="cnt-f">0</span></span>
+      <span class="chip chip-left">🃏 Còn: <span id="cnt-l">0</span></span>
+    </div>
+
+    <button class="btn-shuffle" onclick="fcShuffle()">🔀 Trộn ngẫu nhiên</button>
+  </aside>
+
+  <main class="main-content">
+    <div class="card-counter" id="card-counter">Thẻ 1 / 1</div>
+
+    <div class="scene" id="scene" onclick="fcFlip()">
+      <div class="card" id="card">
+        <!-- FRONT -->
+        <div class="face front">
+          <div class="word-main" id="fc-w"></div>
+          <div class="word-pos" id="fc-pos"></div>
+          <div class="word-ipa" id="fc-ipa"></div>
+          <div class="card-action-row">
+            <button class="btn-audio" onclick="fcPlayAudio(event)">🔊 Phát âm</button>
+            <button class="btn-hint" onclick="fcShowHint(event)">🖼 Hình gợi ý</button>
+          </div>
+          <div class="svg-hint" id="svg-hint"></div>
+          <div class="tap-hint">Nhấn thẻ để xem nghĩa ↩</div>
+        </div>
+        <!-- BACK -->
+        <div class="face back">
+          <div class="vn-label">Nghĩa tiếng Việt</div>
+          <div class="vn-meaning" id="fc-vn"></div>
+          <div class="vn-word" id="fc-en-back"></div>
+          <div class="vn-example" id="fc-ex"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-row">
+      <button class="nav-btn btn-prev"     onclick="fcPrev()">◀ Trước</button>
+      <button class="nav-btn btn-forget"   onclick="fcForget()">❌ Quên</button>
+      <button class="nav-btn btn-remember" onclick="fcRemember()">✅ Nhớ</button>
+      <button class="nav-btn btn-next"     onclick="fcNext()">Tiếp ▶</button>
+    </div>
+
+    <!-- ROUND END (has forgotten words) -->
+    <div class="round-end-screen" id="round-end-screen">
+      <div class="finish-emoji">🔁</div>
+      <div class="finish-title">Hết lượt học!</div>
+      <div class="finish-sub" id="round-end-sub"></div>
+      <div class="forget-list" id="forget-list"></div>
+      <div class="finish-actions">
+        <button class="btn-restart" onclick="fcNextRound()">🔄 Ôn lại ngay từ Quên</button>
+        <button class="btn-restart btn-restart-alt" onclick="fcRestart()">↩ Làm lại từ đầu</button>
+      </div>
+    </div>
+
+    <!-- ALL DONE -->
+    <div class="finish-screen" id="finish-screen">
+      <div class="finish-emoji">🎉</div>
+      <div class="finish-title">Xuất sắc!</div>
+      <div class="finish-sub">Bạn đã nhớ toàn bộ từ vựng nhóm này!<br>Hãy tiếp tục luyện tập nhé! ✨</div>
+      <button class="btn-restart" onclick="fcRestart()">🔄 Làm lại từ đầu</button>
+    </div>
+  </main>
+</div>
+
+<!-- iOS Install Guide -->
+<div class="ios-guide" id="ios-guide">
+  <button onclick="document.getElementById('ios-guide').style.display='none'">✕</button>
+  <strong>📱 Cài lên màn hình điện thoại:</strong><br>
+  Nhấn nút <strong>Chia sẻ</strong> (⬆) → chọn <strong>"Thêm vào Màn hình chính"</strong>
+</div>
+
+<script>
+// ==================== DATA ====================
+const ALL_WORDS = [
+  {
+    "en": "reflect",
+    "pos": "v",
+    "vn": "suy ngẫm, phản chiếu",
+    "ipa": "/rɪˈflekt/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#e0f2fe\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🪞</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">reflect - mirror image</text></svg>",
+    "example": "The mirror will <strong>reflect</strong> the light onto the wall."
+  },
+  {
+    "en": "brushstroke",
+    "pos": "n",
+    "vn": "nét vẽ, đường cọ",
+    "ipa": "/ˈbrʌʃ.strəʊk/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fef08a\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🖌️</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">brushstroke - painter's touch</text></svg>",
+    "example": "Each <strong>brushstroke</strong> on the canvas was precise and deliberate."
+  },
+  {
+    "en": "closet",
+    "pos": "adj",
+    "vn": "ẩn danh, kín đáo",
+    "ipa": "/ˈklɒz.ɪt/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#f1f5f9\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🚪</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">closet - hidden, private</text></svg>",
+    "example": "He was a <strong>closet</strong> fan of classical poetry, never telling his friends."
+  },
+  {
+    "en": "incredulous",
+    "pos": "adj",
+    "vn": "thán phục, hoài nghi",
+    "ipa": "/ɪnˈkred.jə.ləs/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fef3c7\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🤨</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">incredulous - disbelieving</text></svg>",
+    "example": "She gave him an <strong>incredulous</strong> look when he claimed he could fly."
+  },
+  {
+    "en": "turpentine",
+    "pos": "n",
+    "vn": "dầu thông (chất tẩy rửa sơn)",
+    "ipa": "/ˈtɜː.pən.taɪn/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fee2e2\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🧪</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">turpentine - paint solvent</text></svg>",
+    "example": "Artists use <strong>turpentine</strong> to clean paint from their brushes."
+  },
+  {
+    "en": "crude",
+    "pos": "adj",
+    "vn": "thô sơ, thô ráp",
+    "ipa": "/kruːd/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fee2e2\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🛠️</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">crude - rough, basic</text></svg>",
+    "example": "The early humans made <strong>crude</strong> tools out of stone and bone."
+  },
+  {
+    "en": "furiously",
+    "pos": "adv",
+    "vn": "cuồng nhiệt, mãnh liệt",
+    "ipa": "/ˈfjʊə.ri.əs.li/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fee2e2\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">⚡</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">furiously - with great energy</text></svg>",
+    "example": "She worked <strong>furiously</strong> to finish the report before the deadline."
+  },
+  {
+    "en": "frustration",
+    "pos": "n",
+    "vn": "sự thất vọng, bất lực",
+    "ipa": "/frʌsˈtreɪ.ʃən/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fee2e2\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">😤</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">frustration - feeling blocked</text></svg>",
+    "example": "He threw his hands up in <strong>frustration</strong> when the computer crashed."
+  },
+  {
+    "en": "miraculously",
+    "pos": "adv",
+    "vn": "một cách thần kỳ",
+    "ipa": "/mɪˈræk.jə.ləs.li/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#dbeafe\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">✨</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">miraculously - like a miracle</text></svg>",
+    "example": "The driver <strong>miraculously</strong> escaped the car crash without any injuries."
+  },
+  {
+    "en": "vaporous",
+    "pos": "adj",
+    "vn": "mờ sương, như hơi nước",
+    "ipa": "/ˈveɪ.pər.əs/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#f1f5f9\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">💨</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">vaporous - misty, like steam</text></svg>",
+    "example": "A <strong>vaporous</strong> mist rose from the lake early in the morning."
+  },
+  {
+    "en": "exotic",
+    "pos": "adj",
+    "vn": "ngoại lai, độc lạ từ bên ngoài",
+    "ipa": "/ɪɡˈzɒt.ɪk/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#dcfce7\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🌴</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">exotic - foreign, unique</text></svg>",
+    "example": "The greenhouse was filled with <strong>exotic</strong> flowers from the Amazon."
+  },
+  {
+    "en": "conventional",
+    "pos": "adj",
+    "vn": "truyền thống, thông thường",
+    "ipa": "/kənˈven.ʃən.əl/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#f1f5f9\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🏛️</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">conventional - traditional way</text></svg>",
+    "example": "He chose a <strong>conventional</strong> medicine instead of herbal treatments."
+  },
+  {
+    "en": "heretical",
+    "pos": "adj",
+    "vn": "phi truyền thống, trái thông lệ",
+    "ipa": "/həˈret.ɪ.kəl/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fee2e2\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🚫</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">heretical - unorthodox belief</text></svg>",
+    "example": "In the past, claiming the Earth moved around the Sun was considered <strong>heretical</strong>."
+  },
+  {
+    "en": "management",
+    "pos": "n",
+    "vn": "sự quản lý, kiểm soát",
+    "ipa": "/ˈmæn.ɪdʒ.mənt/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#f1f5f9\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">📋</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">management - control, planning</text></svg>",
+    "example": "Under new <strong>management</strong>, the company’s profits doubled."
+  },
+  {
+    "en": "indoctrination",
+    "pos": "n",
+    "vn": "sự truyền bá quan điểm, tiêm nhiễm",
+    "ipa": "/ɪnˌdɒk.trɪˈneɪ.ʃən/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fee2e2\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🧠</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">indoctrination - brainwashing</text></svg>",
+    "example": "Political <strong>indoctrination</strong> was common in schools during the regime."
+  },
+  {
+    "en": "militaristic",
+    "pos": "adj",
+    "vn": "quân sự hóa, mang tính quân đội",
+    "ipa": "/ˌmɪl.ɪ.təˈrɪs.tɪk/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fee2e2\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🪖</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">militaristic - warlike attitude</text></svg>",
+    "example": "The dictator gave a highly <strong>militaristic</strong> speech to the soldiers."
+  },
+  {
+    "en": "innocuous",
+    "pos": "adj",
+    "vn": "vô hại",
+    "ipa": "/ɪˈnɒk.ju.əs/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#dcfce7\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🌼</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">innocuous - harmless</text></svg>",
+    "example": "It was an <strong>innocuous</strong> question, but she seemed offended by it."
+  },
+  {
+    "en": "pollinate",
+    "pos": "v",
+    "vn": "thụ phấn",
+    "ipa": "/ˈpɒl.ə.neɪt/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fef9c3\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🐝</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">pollinate - spread pollen</text></svg>",
+    "example": "Bees help to <strong>pollinate</strong> crops as they search for nectar."
+  },
+  {
+    "en": "overstated",
+    "pos": "adj",
+    "vn": "bị thổi phồng, cường điệu",
+    "ipa": "/ˌəʊ.vəˈsteɪ.tɪd/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fee2e2\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">📢</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">overstated - exaggerated</text></svg>",
+    "example": "The danger of the storm was <strong>overstated</strong> by the media."
+  },
+  {
+    "en": "strategic",
+    "pos": "adj",
+    "vn": "có chiến lược",
+    "ipa": "/strəˈtiː.dʒɪk/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#e2e8f0\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">♟️</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">strategic - carefully planned</text></svg>",
+    "example": "The general made a <strong>strategic</strong> decision to withdraw his troops."
+  },
+  {
+    "en": "geochemist",
+    "pos": "n",
+    "vn": "nhà địa hóa học",
+    "ipa": "/ˌdʒiː.əʊˈkem.ɪst/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#e0f2fe\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🥼</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">geochemist - earth chemist</text></svg>",
+    "example": "The <strong>geochemist</strong> analyzed the mineral composition of the volcanic rocks."
+  },
+  {
+    "en": "eruption",
+    "pos": "n",
+    "vn": "sự phun trào, phun trào",
+    "ipa": "/ɪˈrʌp.ʃən/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fee2e2\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🌋</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">eruption - volcanic blast</text></svg>",
+    "example": "The sudden volcanic <strong>eruption</strong> forced thousands to evacuate."
+  },
+  {
+    "en": "mantle",
+    "pos": "n",
+    "vn": "lớp manti (lớp phủ của Trái Đất)",
+    "ipa": "/ˈmæn.təl/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#ffedd5\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🌎</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">mantle - earth's layer</text></svg>",
+    "example": "The Earth's <strong>mantle</strong> lies directly beneath the thin outer crust."
+  },
+  {
+    "en": "mineral",
+    "pos": "n",
+    "vn": "khoáng chất",
+    "ipa": "/ˈmɪn.ər.əl/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fef9c3\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">💎</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">mineral - natural crystal</text></svg>",
+    "example": "Calcium is an essential <strong>mineral</strong> for building strong bones."
+  },
+  {
+    "en": "synthesize",
+    "pos": "v",
+    "vn": "tổng hợp (nhân tạo)",
+    "ipa": "/ˈsɪn.θə.saɪz/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#dcfce7\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🧪</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">synthesize - combine artificially</text></svg>",
+    "example": "Scientists can now <strong>synthesize</strong> new medicine in the laboratory."
+  },
+  {
+    "en": "microscopic",
+    "pos": "adj",
+    "vn": "ở mức độ hiển vi, siêu nhỏ",
+    "ipa": "/ˌmaɪ.krəˈskɒp.ɪk/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#dcfce7\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🔬</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">microscopic - extremely small</text></svg>",
+    "example": "Bacteria are <strong>microscopic</strong> organisms that cannot be seen with the naked eye."
+  },
+  {
+    "en": "descent",
+    "pos": "n",
+    "vn": "nguồn gốc, dòng dõi",
+    "ipa": "/dɪˈsent/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#dcfce7\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🧬</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">descent - ancestry, lineage</text></svg>",
+    "example": "The airplane began its slow <strong>descent</strong> toward the runway."
+  },
+  {
+    "en": "prominence",
+    "pos": "n",
+    "vn": "sự nổi bật, nổi tiếng vượt trội",
+    "ipa": "/ˈprɒm.ɪ.nəns/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fef08a\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🌟</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">prominence - state of fame</text></svg>",
+    "example": "The young artist rose to <strong>prominence</strong> after winning the award."
+  },
+  {
+    "en": "adopt",
+    "pos": "v",
+    "vn": "chọn theo, thông qua, nhận nuôi",
+    "ipa": "/əˈdɒpt/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#e0f2fe\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🤝</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">adopt - choose to follow</text></svg>",
+    "example": "The committee decided to <strong>adopt</strong> the new safety guidelines."
+  },
+  {
+    "en": "lineage",
+    "pos": "n",
+    "vn": "dòng dõi, thế hệ gia đình",
+    "ipa": "/ˈlɪn.i.ɪdʒ/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#dcfce7\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🌳</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">lineage - family tree</text></svg>",
+    "example": "She traced her family <strong>lineage</strong> back to the 18th century."
+  },
+  {
+    "en": "choreographer",
+    "pos": "n",
+    "vn": "biên đạo múa",
+    "ipa": "/ˌdɒr.iˈɒɡ.rə.fər/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fde6f5\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">💃</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">choreographer - dance maker</text></svg>",
+    "example": "The <strong>choreographer</strong> spent weeks teaching the dancers the new steps."
+  },
+  {
+    "en": "catalyst",
+    "pos": "n",
+    "vn": "chất xúc tác, nhân tố kích thích",
+    "ipa": "/ˈkæt.əl.ɪst/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fee2e2\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">⚡</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">catalyst - spark change</text></svg>",
+    "example": "The new tax law acted as a <strong>catalyst</strong> for economic growth."
+  },
+  {
+    "en": "associate",
+    "pos": "v",
+    "vn": "liên kết, gắn liền với",
+    "ipa": "/əˈsəʊ.si.eɪt/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#e0f2fe\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🔗</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">associate - link concepts</text></svg>",
+    "example": "People often <strong>associate</strong> the color red with danger or anger."
+  },
+  {
+    "en": "stanza",
+    "pos": "n",
+    "vn": "khổ thơ",
+    "ipa": "/ˈstæn.zə/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fef9c3\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">📝</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">stanza - verse paragraph</text></svg>",
+    "example": "The poem consists of four <strong>stanza</strong>s, and each <strong>stanza</strong> has four lines."
+  },
+  {
+    "en": "octet",
+    "pos": "n",
+    "vn": "khổ thơ 8 dòng",
+    "ipa": "/ɒkˈtet/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#dbeafe\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">8️⃣</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">octet - group of eight</text></svg>",
+    "example": "The first eight lines of a sonnet are known as the <strong>octet</strong>."
+  },
+  {
+    "en": "sestet",
+    "pos": "n",
+    "vn": "khổ thơ 6 dòng",
+    "ipa": "/sesˈtet/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#dcfce7\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">6️⃣</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">sestet - six-line stanza</text></svg>",
+    "example": "The final six lines of a sonnet form the <strong>sestet</strong>."
+  },
+  {
+    "en": "dilemma",
+    "pos": "n",
+    "vn": "tình thế khó xử, tiến thoái lưỡng nan",
+    "ipa": "/daɪˈlem.ə/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fee2e2\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🤷</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">dilemma - difficult choice</text></svg>",
+    "example": "She faced a difficult <strong>dilemma</strong> between her career and her family."
+  },
+  {
+    "en": "unattainable",
+    "pos": "adj",
+    "vn": "không thể đạt tới, ngoài tầm với",
+    "ipa": "/ˌʌn.əˈteɪ.nə.bəl/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fee2e2\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🌌</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">unattainable - out of reach</text></svg>",
+    "example": "Perfect peace may seem like an <strong>unattainable</strong> goal, but we must try."
+  },
+  {
+    "en": "hierarchical",
+    "pos": "adj",
+    "vn": "phân cấp, có tôn ti trật tự",
+    "ipa": "/ˌhaɪəˈrɑː.kɪ.kəl/",
+    "group": "Society & Behavior",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#f1f5f9\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🔺</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">hierarchical - ranked order</text></svg>",
+    "example": "The military has a strict <strong>hierarchical</strong> structure of command."
+  },
+  {
+    "en": "interaction",
+    "pos": "n",
+    "vn": "sự tương tác qua lại",
+    "ipa": "/ˌɪn.təˈræk.ʃən/",
+    "group": "Society & Behavior",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#e0f2fe\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🗣️</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">interaction - mutual action</text></svg>",
+    "example": "Online classes often lack the personal <strong>interaction</strong> of a real classroom."
+  },
+  {
+    "en": "network",
+    "pos": "n",
+    "vn": "mạng lưới, hệ thống",
+    "ipa": "/ˈnet.wɜːk/",
+    "group": "Society & Behavior",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#e0f2fe\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🕸️</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">network - connected system</text></svg>",
+    "example": "The company has a vast <strong>network</strong> of stores across the country."
+  },
+  {
+    "en": "data",
+    "pos": "n",
+    "vn": "dữ liệu, thông tin số liệu",
+    "ipa": "/ˈdeɪ.tə/",
+    "group": "Society & Behavior",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#e0f2fe\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">📊</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">data - numbers & facts</text></svg>",
+    "example": "We collected statistical <strong>data</strong> to analyze the students' performance."
+  },
+  {
+    "en": "laureate",
+    "pos": "n",
+    "vn": "người đoạt giải thưởng danh giá",
+    "ipa": "/ˈlɒr.i.ət/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fef08a\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🏅</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">laureate - prize winner</text></svg>",
+    "example": "The Nobel <strong>laureate</strong> delivered a speech on climate change."
+  },
+  {
+    "en": "immortalize",
+    "pos": "v",
+    "vn": "bất tử hóa, lưu danh thiên cổ",
+    "ipa": "/ɪˈmɔː.təl.aɪz/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#e2e8f0\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🗿</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">immortalize - make live forever</text></svg>",
+    "example": "They built a statue to <strong>immortalize</strong> the national hero."
+  },
+  {
+    "en": "transform",
+    "pos": "v",
+    "vn": "biến đổi dạng thức/bản chất",
+    "ipa": "/trænsˈfɔːm/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#dcfce7\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🦋</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">transform - change shape</text></svg>",
+    "example": "The new coach helped to <strong>transform</strong> the team into champions."
+  },
+  {
+    "en": "solo",
+    "pos": "n",
+    "vn": "màn độc diễn, độc tấu",
+    "ipa": "/ˈsəʊ.ləʊ/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#f1f5f9\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">👤</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">solo - performed alone</text></svg>",
+    "example": "He sang a beautiful <strong>solo</strong> during the church service."
+  },
+  {
+    "en": "depict",
+    "pos": "v",
+    "vn": "mô tả, khắc họa chân thực",
+    "ipa": "/dɪˈpɪkt/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fef08a\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🎨</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">depict - show in drawing</text></svg>",
+    "example": "Paintings on the tomb walls <strong>depict</strong> scenes of daily life."
+  },
+  {
+    "en": "meditative",
+    "pos": "adj",
+    "vn": "thiền định, trầm tư sâu sắc",
+    "ipa": "/ˈmed.ɪ.tə.tɪv/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#dcfce7\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🧘</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">meditative - deep thought</text></svg>",
+    "example": "Yoga promotes a calm, <strong>meditative</strong> state of mind."
+  },
+  {
+    "en": "stylistic",
+    "pos": "adj",
+    "vn": "thuộc về phong cách nghệ thuật",
+    "ipa": "/staɪˈlɪs.tɪk/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fef08a\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">✨</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">stylistic - artistic style</text></svg>",
+    "example": "The director made several <strong>stylistic</strong> choices that set the film apart."
+  },
+  {
+    "en": "realism",
+    "pos": "n",
+    "vn": "chủ nghĩa hiện thực",
+    "ipa": "/ˈrɪə.lɪ.zəm/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#e0f2fe\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">📸</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">realism - true to life</text></svg>",
+    "example": "His paintings are known for their extreme <strong>realism</strong> and detail."
+  },
+  {
+    "en": "masterfully",
+    "pos": "adv",
+    "vn": "một cách tài tình, điêu luyện",
+    "ipa": "/ˈmɑː.stə.fəl.i/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fef08a\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🏆</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">masterfully - with great skill</text></svg>",
+    "example": "The pianist <strong>masterfully</strong> performed the difficult concerto."
+  },
+  {
+    "en": "prolong",
+    "pos": "v",
+    "vn": "kéo dài ra về mặt thời gian",
+    "ipa": "/prəˈlɒŋ/",
+    "group": "Literature & Art",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#f1f5f9\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">⏳</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">prolong - make last longer</text></svg>",
+    "example": "Regular exercise can help <strong>prolong</strong> your life and stay healthy."
+  },
+  {
+    "en": "underbelly",
+    "pos": "n",
+    "vn": "phần bụng dưới",
+    "ipa": "/ˈʌn.dəˌbel.i/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#dcfce7\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🐢</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">underbelly - soft underside</text></svg>",
+    "example": "The documentary exposed the dark <strong>underbelly</strong> of the city."
+  },
+  {
+    "en": "lipid",
+    "pos": "n",
+    "vn": "chất béo sinh học, lipid",
+    "ipa": "/ˈlɪp.ɪd/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#dcfce7\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🧪</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">lipid - biological fat</text></svg>",
+    "example": "A <strong>lipid</strong> is a type of organic compound that includes fats and oils."
+  },
+  {
+    "en": "perpendicular",
+    "pos": "adj",
+    "vn": "vuông góc, thẳng đứng góc 90 độ",
+    "ipa": "/ˌpɜː.pənˈdɪk.jə.lər/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#e0f2fe\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">📐</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">perpendicular - right angle 90°</text></svg>",
+    "example": "The street runs <strong>perpendicular</strong> to the main highway."
+  },
+  {
+    "en": "friction",
+    "pos": "n",
+    "vn": "lực ma sát, cọ xát",
+    "ipa": "/ˈfrɪk.ʃən/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#e2e8f0\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">⚙️</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">friction - rubbing surfaces</text></svg>",
+    "example": "Rough roads create more <strong>friction</strong>, which slows down the car."
+  },
+  {
+    "en": "camouflage",
+    "pos": "n",
+    "vn": "sự ngụy trang hòa nhập môi trường",
+    "ipa": "/ˈæm.ə.flɑːʒ/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#dcfce7\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🦎</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">camouflage - blend in</text></svg>",
+    "example": "The tiger's stripes provide excellent <strong>camouflage</strong> in the tall grass."
+  },
+  {
+    "en": "coating",
+    "pos": "n",
+    "vn": "lớp sơn phủ bề mặt",
+    "ipa": "/ˈgəʊ.tɪŋ/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fef9c3\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🎨</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">coating - protective layer</text></svg>",
+    "example": "A thin <strong>coating</strong> of ice covered the roads this morning."
+  },
+  {
+    "en": "oblivious",
+    "pos": "adj",
+    "vn": "không chú ý tới, vô tâm, lãng quên",
+    "ipa": "/əˈblɪv.i.əs/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fee2e2\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🙈</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">oblivious - unaware, unnoticing</text></svg>",
+    "example": "He was <strong>oblivious</strong> to the noise around him as he studied."
+  },
+  {
+    "en": "cryptogram",
+    "pos": "n",
+    "vn": "tin mật mã, chữ viết bảo mật",
+    "ipa": "/ˈkrɪp.tə.ɡræm/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fee2e2\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🔐</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">cryptogram - secret code</text></svg>",
+    "example": "The detective spent hours trying to decode the <strong>cryptogram</strong>."
+  },
+  {
+    "en": "predator",
+    "pos": "n",
+    "vn": "thú săn mồi, động vật ăn thịt",
+    "ipa": "/ˈpred.ə.tər/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fee2e2\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🦁</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">predator - hunter animal</text></svg>",
+    "example": "The owl is a nocturnal <strong>predator</strong> that hunts small mice."
+  },
+  {
+    "en": "volatile",
+    "pos": "adj",
+    "vn": "dễ hóa hơi, bay hơi nhanh",
+    "ipa": "/ˈvɒl.ə.taɪl/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fee2e2\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">💨</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">volatile - quickly evaporating</text></svg>",
+    "example": "The stock market can be highly <strong>volatile</strong>, with prices changing rapidly."
+  },
+  {
+    "en": "organic",
+    "pos": "adj",
+    "vn": "hữu cơ, tự nhiên sinh học",
+    "ipa": "/ɔːˈɡæn.ɪk/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#dcfce7\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🍃</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">organic - natural chemistry</text></svg>",
+    "example": "We prefer to buy <strong>organic</strong> vegetables grown without chemical pesticides."
+  },
+  {
+    "en": "compound",
+    "pos": "n",
+    "vn": "hợp chất hóa học",
+    "ipa": "/ˈkɒm.paʊnd/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#dcfce7\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🧪</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">compound - chemical mixture</text></svg>",
+    "example": "Water is a chemical <strong>compound</strong> made of hydrogen and oxygen."
+  },
+  {
+    "en": "dynasty",
+    "pos": "n",
+    "vn": "triều đại cai trị",
+    "ipa": "/ˈdɪn.ə.sti/",
+    "group": "Society & Behavior",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fef08a\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">👑</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">dynasty - royal family line</text></svg>",
+    "example": "The Ming <strong>dynasty</strong> ruled China for nearly three centuries."
+  },
+  {
+    "en": "pharaoh",
+    "pos": "n",
+    "vn": "vua Ai Cập cổ đại",
+    "ipa": "/ˈfeə.rəʊ/",
+    "group": "Society & Behavior",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#fef08a\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">👑</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">pharaoh - egyptian king</text></svg>",
+    "example": "Tutankhamun was a famous Egyptian <strong>pharaoh</strong> who died at a young age."
+  },
+  {
+    "en": "succeed",
+    "pos": "v",
+    "vn": "kế vị, tiếp nối, thành công",
+    "ipa": "/səkˈsiːd/",
+    "group": "Society & Behavior",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#dcfce7\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">➡️</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">succeed - follow after</text></svg>",
+    "example": "She is expected to <strong>succeed</strong> her father as president of the company."
+  },
+  {
+    "en": "outdo",
+    "pos": "v",
+    "vn": "vượt mặt, làm tốt hơn",
+    "ipa": "/ˌaʊtˈduː/",
+    "group": "Society & Behavior",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#dcfce7\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🏃</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">outdo - perform better</text></svg>",
+    "example": "He always tries to <strong>outdo</strong> his older brother in sports."
+  },
+  {
+    "en": "plateau",
+    "pos": "n",
+    "vn": "cao nguyên",
+    "ipa": "/ˈplæt.əʊ/",
+    "group": "Society & Behavior",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#ffedd5\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🏔️</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">plateau - flat highland</text></svg>",
+    "example": "The mountain road led us to a wide, windy <strong>plateau</strong>."
+  },
+  {
+    "en": "ambition",
+    "pos": "n",
+    "vn": "tham vọng, hoài bão lớn",
+    "ipa": "/æmˈbɪʃ.ən/",
+    "group": "Society & Behavior",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#ffedd5\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🎯</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">ambition - strong desire</text></svg>",
+    "example": "Her lifelong <strong>ambition</strong> is to become a research scientist."
+  },
+  {
+    "en": "orient",
+    "pos": "v",
+    "vn": "định hướng bản thân",
+    "ipa": "/ˈɔː.ri.ent/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#ffedd5\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🧭</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">orient - find your bearings</text></svg>",
+    "example": "It took a few minutes to <strong>orient</strong> myself in the new city."
+  },
+  {
+    "en": "reference",
+    "pos": "n",
+    "vn": "điểm mốc tham chiếu, tài liệu tham khảo",
+    "ipa": "/ˈref.ər.əns/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#e0f2fe\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">📖</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">reference - source of info</text></svg>",
+    "example": "The book contains a list of sources for future <strong>reference</strong>."
+  },
+  {
+    "en": "cartographer",
+    "pos": "n",
+    "vn": "người vẽ bản đồ",
+    "ipa": "/kɑːˈtɒɡ.rə.fər/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#ffedd5\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🗺️</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">cartographer - map maker</text></svg>",
+    "example": "The <strong>cartographer</strong> drew a detailed map of the uncharted islands."
+  },
+  {
+    "en": "spatial",
+    "pos": "adj",
+    "vn": "thuộc không gian, vị trí",
+    "ipa": "/ˈspeɪ.ʃəl/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#e0f2fe\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">🌌</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">spatial - relating to space</text></svg>",
+    "example": "Playing video games can improve your <strong>spatial</strong> awareness."
+  },
+  {
+    "en": "destination",
+    "pos": "n",
+    "vn": "điểm đến, hành trình cuối",
+    "ipa": "/ˌdes.tɪˈneɪ.ʃən/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#ffedd5\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">📍</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">destination - final stop</text></svg>",
+    "example": "We finally reached our holiday <strong>destination</strong> after a long drive."
+  },
+  {
+    "en": "outline",
+    "pos": "n",
+    "vn": "ranh giới, phác thảo sơ bộ",
+    "ipa": "/ˈaʊt.laɪn/",
+    "group": "Science & Space",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 110\"><rect width=\"200\" height=\"110\" fill=\"#f1f5f9\" rx=\"10\"/><text x=\"100\" y=\"45\" font-size=\"28\" text-anchor=\"middle\">✏️</text><text x=\"100\" y=\"75\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" fill=\"#1e293b\" text-anchor=\"middle\">outline - rough sketch</text></svg>",
+    "example": "She drew a simple <strong>outline</strong> of the country on the blackboard."
+  }
+];
+
+const GROUPS = ["Tất cả", "Literature & Art", "Science & Space", "Society & Behavior"];
+
+const GROUP_EMOJIS = {
+  "Tất cả": "📚",
+  "Literature & Art": "🎨",
+  "Science & Space": "🧪",
+  "Society & Behavior": "👥"
+};
+
+// ==================== STATE ====================
+let deck = [];
+let current = 0;
+let remembered = [];
+let forgotten = [];
+let currentGroup = "Tất cả";
+
+function getFiltered() {
+  if (currentGroup === "Tất cả") return [...ALL_WORDS];
+  return ALL_WORDS.filter(w => w.group === currentGroup);
+}
+
+function fcRestart() {
+  remembered = [];
+  forgotten = [];
+  deck = getFiltered();
+  current = 0;
+  document.getElementById('finish-screen').style.display = 'none';
+  document.getElementById('round-end-screen').style.display = 'none';
+  document.getElementById('scene').style.display = '';
+  document.querySelectorAll('.nav-row')[0].style.display = '';
+  document.getElementById('card-counter').style.display = '';
+  document.getElementById('progress-wrap') && (document.getElementById('progress-wrap').style.display = '');
+  fcRender();
+}
+
+function fcShuffle() {
+  for (let i = deck.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [deck[i], deck[j]] = [deck[j], deck[i]];
+  }
+  current = 0;
+  document.getElementById('card').classList.remove('flipped');
+  fcHideHint();
+  fcRender();
+}
+
+function fcRender() {
+  if (deck.length === 0) return;
+  const w = deck[current];
+  document.getElementById('fc-w').textContent = w.en;
+  document.getElementById('fc-pos').textContent = w.pos;
+  document.getElementById('fc-ipa').textContent = w.ipa;
+  document.getElementById('fc-vn').textContent = w.vn;
+  document.getElementById('fc-en-back').textContent = w.en + '  ' + w.ipa;
+  document.getElementById('fc-ex').innerHTML = w.example || '';
+  document.getElementById('svg-hint').innerHTML = w.svg || '';
+  document.getElementById('card-counter').textContent = `Thẻ ${current + 1} / ${deck.length}`;
+  document.getElementById('cnt-r').textContent = remembered.length;
+  document.getElementById('cnt-f').textContent = forgotten.length;
+  document.getElementById('cnt-l').textContent = deck.length;
+
+  const total = ALL_WORDS.filter(w => currentGroup === "Tất cả" || w.group === currentGroup).length;
+  const pct = Math.round((remembered.length / total) * 100);
+  document.getElementById('progress-bar').style.width = pct + '%';
+}
+
+function fcFlip() {
+  document.getElementById('card').classList.toggle('flipped');
+  fcHideHint();
+}
+
+function fcHideHint() {
+  document.getElementById('svg-hint').style.display = 'none';
+}
+
+function fcPlayAudio(e) {
+  e.stopPropagation();
+  const word = document.getElementById('fc-w').textContent;
+  const u = new SpeechSynthesisUtterance(word);
+  u.lang = 'en-US'; u.rate = 0.85;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(u);
+}
+
+function fcShowHint(e) {
+  e.stopPropagation();
+  const hint = document.getElementById('svg-hint');
+  hint.style.display = (hint.style.display === 'none' || hint.style.display === '') ? 'block' : 'none';
+}
+
+function fcNext() {
+  if (current < deck.length - 1) {
+    current++;
+    document.getElementById('card').classList.remove('flipped');
+    fcHideHint();
+    fcRender();
+  }
+}
+
+function fcPrev() {
+  if (current > 0) {
+    current--;
+    document.getElementById('card').classList.remove('flipped');
+    fcHideHint();
+    fcRender();
+  }
+}
+
+function fcRemember() {
+  remembered.push(deck[current]);
+  deck.splice(current, 1);
+  if (current >= deck.length) current = Math.max(0, deck.length - 1);
+  document.getElementById('card').classList.remove('flipped');
+  fcHideHint();
+  if (deck.length === 0) fcCheckEnd();
+  else fcRender();
+}
+
+function fcForget() {
+  forgotten.push(deck[current]);
+  if (current < deck.length - 1) {
+    current++;
+  } else {
+    current = 0;
+    fcCheckEnd();
+    return;
+  }
+  document.getElementById('card').classList.remove('flipped');
+  fcHideHint();
+  fcRender();
+}
+
+function fcCheckEnd() {
+  if (deck.length === 0) {
+    if (forgotten.length === 0) {
+      document.getElementById('scene').style.display = 'none';
+      document.querySelectorAll('.nav-row')[0].style.display = 'none';
+      document.getElementById('card-counter').style.display = 'none';
+      document.getElementById('finish-screen').style.display = 'flex';
+    } else {
+      document.getElementById('scene').style.display = 'none';
+      document.querySelectorAll('.nav-row')[0].style.display = 'none';
+      document.getElementById('card-counter').style.display = 'none';
+      document.getElementById('round-end-sub').textContent =
+        `Bạn nhớ ${remembered.length} từ, còn ${forgotten.length} từ cần ôn lại:`;
+      const fl = document.getElementById('forget-list');
+      fl.innerHTML = '<h3>📌 Từ cần ôn lại:</h3>';
+      forgotten.forEach(w => {
+        fl.innerHTML += `<div class="forget-item">
+          <span><strong>${w.en}</strong> <span class="pos-badge">${w.pos}</span> – ${w.vn}</span>
+        </div>`;
+      });
+      document.getElementById('round-end-screen').style.display = 'flex';
+    }
+  }
+}
+
+function fcNextRound() {
+  deck = [...forgotten];
+  forgotten = [];
+  current = 0;
+  document.getElementById('round-end-screen').style.display = 'none';
+  document.getElementById('scene').style.display = '';
+  document.querySelectorAll('.nav-row')[0].style.display = '';
+  document.getElementById('card-counter').style.display = '';
+  fcRender();
+}
+
+// ==================== TABS ====================
+function buildTabs() {
+  const tabsEl = document.getElementById('tabs');
+  tabsEl.innerHTML = '';
+  GROUPS.forEach(g => {
+    const btn = document.createElement('button');
+    btn.className = 'tab-btn' + (g === currentGroup ? ' active' : '');
+    const count = g === "Tất cả" ? ALL_WORDS.length : ALL_WORDS.filter(w => w.group === g).length;
+    const emoji = GROUP_EMOJIS[g] || "📝";
+    btn.innerHTML = `<span>${emoji} ${g}</span><span style="opacity: 0.8; font-size: 0.72rem; font-weight: 700; margin-left: 8px;">${count}</span>`;
+    btn.onclick = () => {
+      currentGroup = g;
+      buildTabs();
+      deck = getFiltered();
+      remembered = []; forgotten = [];
+      current = 0;
+      document.getElementById('round-end-screen').style.display = 'none';
+      document.getElementById('finish-screen').style.display = 'none';
+      document.getElementById('scene').style.display = '';
+      document.querySelectorAll('.nav-row')[0].style.display = '';
+      document.getElementById('card-counter').style.display = '';
+      document.getElementById('card').classList.remove('flipped');
+      fcHideHint();
+      fcRender();
+    };
+    tabsEl.appendChild(btn);
+  });
+}
+
+// ==================== PWA ====================
+const manifest = {
+  name: "ACCUPLACER Exam 1 Reading Practice",
+  short_name: "ACCUPLACER_Exam1",
+  start_url: ".",
+  display: "standalone",
+  background_color: "#f0fdfa",
+  theme_color: "#0f766e",
+  icons: [{ src: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>", sizes: "192x192", type: "image/svg+xml" }]
+};
+const mBlob = new Blob([JSON.stringify(manifest)], {type:'application/json'});
+const mUrl = URL.createObjectURL(mBlob);
+document.getElementById('manifest-placeholder').setAttribute('href', mUrl);
+
+if ('serviceWorker' in navigator) {
+  const swCode = `
+    const CACHE='flashcard-ACCUPLACER_Exam1-v1';
+    self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(['.']))));
+    self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request))));
+  `;
+  const swBlob = new Blob([swCode], {type:'application/javascript'});
+  const swUrl = URL.createObjectURL(swBlob);
+  navigator.serviceWorker.register(swUrl);
+}
+
+// iOS install hint
+if (/iphone|ipad|ipod/i.test(navigator.userAgent) && !window.navigator.standalone) {
+  setTimeout(() => { document.getElementById('ios-guide').style.display = 'block'; }, 2500);
+}
+
+// ==================== INIT ====================
+buildTabs();
+deck = getFiltered();
+fcRender();
+</script>
+</body>
+</html>
